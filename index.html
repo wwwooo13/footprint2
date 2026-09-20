@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>足迹 · 工作台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="足迹首页"><span class="brand-mark">f</span><span>足迹</span></a>
+        <nav class="main-nav" aria-label="主导航">
+          <a class="nav-item active" href="#"><span class="nav-icon">⌂</span>首页</a>
+          <a class="nav-item" href="#todo"><span class="nav-icon">✓</span>我的待办<span class="nav-count">4</span></a>
+          <a class="nav-item" href="#calendar"><span class="nav-icon">□</span>日历</a>
+          <a class="nav-item" href="#projects"><span class="nav-icon">◇</span>项目</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a class="nav-item" href="#settings"><span class="nav-icon">⚙</span>设置</a>
+          <div class="profile"><div class="avatar small">林</div><div><strong>林小满</strong><span>产品设计师</span></div><button class="more" aria-label="更多选项">···</button></div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div class="mobile-brand"><span class="brand-mark">f</span>足迹</div>
+          <div class="topbar-actions"><button class="icon-button" aria-label="搜索">⌕</button><button class="icon-button notification" aria-label="通知">♧<i></i></button><div class="avatar">林</div></div>
+        </header>
+
+        <section class="hero" aria-labelledby="welcome-title">
+          <div><p class="eyebrow">星期一，9月 20日</p><h1 id="welcome-title">早上好，林小满 <span>☀</span></h1><p class="subhead">新的一周，从完成一件重要的小事开始。</p></div>
+          <button class="primary-button" id="addTask"><b>＋</b> 添加待办</button>
+        </section>
+
+        <section class="overview" aria-label="今日概览">
+          <article class="progress-card">
+            <div class="card-heading"><div><span class="section-label">今日完成度</span><p>已完成 <strong id="completeCount">2</strong> / <span id="totalCount">5</span> 项任务</p></div><span class="up">↗ 20%</span></div>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-footer"><span>继续保持，你做得很棒！</span><span id="progressText">40%</span></div>
+          </article>
+          <article class="date-card"><div class="calendar-icon"><span>SEP</span><b>20</b></div><div><span class="section-label">本周日程</span><p>今天有 <strong>2</strong> 个日程安排</p><a href="#calendar">查看日历 <span>→</span></a></div></article>
+        </section>
+
+        <section class="workspace-grid">
+          <section class="todo-panel" id="todo" aria-labelledby="todo-title">
+            <div class="panel-heading"><div><h2 id="todo-title">待办事项</h2><p>专注当下，逐一完成</p></div><button class="text-button" id="showAll">查看全部 <span>→</span></button></div>
+            <div class="task-list" id="taskList">
+              <label class="task completed"><input type="checkbox" checked /><span class="check"></span><span class="task-copy"><b>整理用户访谈纪要</b><small>产品优化</small></span><span class="tag blue">工作</span><time>09:30</time></label>
+              <label class="task completed"><input type="checkbox" checked /><span class="check"></span><span class="task-copy"><b>回复项目周报邮件</b><small>团队协作</small></span><span class="tag purple">工作</span><time>10:00</time></label>
+              <label class="task"><input type="checkbox" /><span class="check"></span><span class="task-copy"><b>完成首页设计稿</b><small>足迹 App · 设计</small></span><span class="tag orange">重要</span><time>14:00</time></label>
+              <label class="task"><input type="checkbox" /><span class="check"></span><span class="task-copy"><b>预约周五体检</b><small>个人事务</small></span><span class="tag green">生活</span><time>16:30</time></label>
+              <label class="task"><input type="checkbox" /><span class="check"></span><span class="task-copy"><b>阅读《设计心理学》</b><small>个人成长</small></span><span class="tag yellow">学习</span><time>20:00</time></label>
+            </div>
+          </section>
+          <aside class="right-column">
+            <section class="focus-card" aria-labelledby="focus-title"><div class="focus-decoration"></div><p class="section-label">今日专注</p><h2 id="focus-title">留一点时间，<br />给真正重要的事。</h2><div class="focus-bottom"><div class="stacked-avatars"><span class="avatar a1">林</span><span class="avatar a2">+3</span></div><button class="round-button" aria-label="开始专注">→</button></div></section>
+            <section class="note-card"><div class="note-head"><h2>快速笔记</h2><span>⌁</span></div><textarea id="quickNote" aria-label="快速笔记" placeholder="记下此刻的想法…"></textarea><div><span>⌘ Enter 保存</span><button id="saveNote">保存</button></div></section>
+          </aside>
+        </section>
+      </main>
+    </div>
+    <dialog id="taskDialog"><form method="dialog"><button class="dialog-close" value="cancel" aria-label="关闭">×</button><p class="section-label">新建待办</p><h2>今天要完成什么？</h2><input id="taskName" required placeholder="例如：准备周会材料" /><div class="dialog-actions"><button value="cancel" class="secondary-button">取消</button><button value="default" class="primary-button">添加待办</button></div></form></dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
